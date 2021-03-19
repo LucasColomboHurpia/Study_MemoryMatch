@@ -1,0 +1,176 @@
+body{
+    background: url(https://wallpaperaccess.com/full/17520.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: rgb(0, 0, 0); 
+    font-family: Arial, Helvetica, sans-serif;}
+
+.hide{display: none;}
+
+#grid{
+    display: grid;
+    grid-gap: 12px;
+    margin: auto;
+    margin-top: 3%;
+
+    grid-template-columns: 100px 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px 100px 100px;
+
+    justify-content: center; 
+    align-content:center;
+}
+
+.tile{
+    background-color: darkslateblue;
+    border-radius: 10%; 
+    box-shadow: 2px 2px 7px #000000;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+.tile:hover{background-color: rgb(97, 83, 187);}
+
+.chosen{background-color: rgb(247, 111, 0)}
+.chosen:hover{background-color: rgb(248, 158, 83);}
+
+@keyframes animationIn{
+    0%{background-color: darkslateblue; border-radius: 40%; transform: rotateY(180deg);}
+    50%{background-color: darkslateblue;transform: rotateY(90deg); }
+    51%{background-color: red;}
+    100%{background-color: rgb(247, 111, 0); border-radius: 10%; transform: rotateY(0deg); }
+}
+
+.animationClick{
+    animation-name: animationIn;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes animationOut{
+    0%{background-color: rgb(247, 111, 0); transform:rotateY(0deg);}
+    50%{background-color: red;transform: rotateY(90deg);}
+    51%{background-color: darkslateblue}
+    100%{background-color: darkslateblue; transform: rotateY(180deg);}
+}
+
+.animationClear{
+    animation-name: animationOut;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+}
+
+
+@keyframes animationMatch{
+0%{background-color: rgb(241, 212, 147);transform: rotateY(0deg);}
+20%{background-color: rgb(245, 60, 60);transform: rotateY(90deg);}
+40%{background-color: red;              transform: rotateY(180deg);}
+60%{background-color: rgb(247, 169, 0);transform: rotateY(90 deg);}
+80%{background-color: rgb(247, 111, 0);transform: rotateY(0deg);}
+90%{background-color: rgb(255, 255, 255); transform: rotateY(180deg);}
+100%{background-color: rgb(247, 111, 0); transform: rotateY(0deg);}
+}
+
+.matchConfirmed{
+    background-color: rgb(247, 70, 0);
+    animation-name: animationMatch;
+    animation-duration: 2s;
+    animation-timing-function: ease-in;
+}
+
+@keyframes chromaLetter{
+    0%{color: rgb(0, 255, 21);}
+    25%{color: yellow;}
+    50%{color: rgb(255, 0, 0);}
+    75%{color: rgb(0, 60, 255);}
+    100%{color: purple;}
+}
+
+#victoryScreen{
+    animation-name: chromaLetter;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
+    cursor: default;
+
+    position: absolute;
+    top: 0%; left: 0%;
+    width: 100%;
+    height: 100%;
+  
+    font-size: 8rem;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes fadeIN{
+    0%{background-color: rgba(97, 83, 187, 0); top: 100%;}
+    25%{background-color: rgba(97, 83, 187, 0.192);}
+    50%{background-color: rgba(97, 83, 187, 0.192);}
+    75%{background-color: rgba(97, 83, 187, 0.74);}
+    100%{background-color: rgba(97, 83, 187, 0.486);top: 0%;}
+}
+
+#VictoryAnnounce{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+
+    width: 100%;
+    height: 100%;
+}
+
+.VictoryAnnounceAnimation{
+    animation-name: fadeIN;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+
+ @keyframes btnResetAnimation{
+    0%{background-color: green;}
+    25%{background-color: yellow;}
+    50%{background-color: red;}
+    75%{background-color: blue;}
+    100%{background-color: purple;}
+ }
+
+.btn:hover{
+    width: 40px;
+    background-color: rgb(87, 79, 143);
+}
+.btn{
+    position: fixed;
+    top: 88%;
+    left: 92%;
+    border-radius: 100%;
+    padding: 8px;
+    background-color: darkslateblue;
+    font-weight: bold;
+    box-shadow: 0px 5px 10px #49496157;
+    padding: 15px;
+    cursor: pointer;
+}
+.resetAnimation{
+    animation-name: btnResetAnimation;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@media (max-width: 775px) { /* for mobile */
+    #grid{
+    grid-template-columns: 75px 75px 75px 75px;
+    grid-template-rows: 75px 75px 75px 75px 75px;
+    }
+    .img{width: 70px;}
+    .btn{left: 78%;}
+    #victoryScreen{font-size: 4rem;}
+}
